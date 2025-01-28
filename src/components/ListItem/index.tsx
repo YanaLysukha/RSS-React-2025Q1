@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import './style.scss';
 
 export default class ListItem extends Component {
     render() {
