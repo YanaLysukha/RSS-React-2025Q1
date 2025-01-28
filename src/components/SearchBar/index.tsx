@@ -9,8 +9,12 @@ export default class SearchBar extends Component {
                     <img className="logo" src="src/assets/icons/LOTR-icon.svg" alt="App Logo" />
                 </div>
                 <form className="search-bar">
-                    <input type="text" placeholder="Find your favorite character..." />
-                    <button>Search</button>
+                    <input
+                        type="text"
+                        placeholder="Find your favorite character..."
+                        className="search-input"
+                    />
+                    <button className="search-btn">Search</button>
                 </form>
             </div>
         );

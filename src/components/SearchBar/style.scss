@@ -1,3 +1,5 @@
+@use '../../styles/_variables';
+
 .search-bar-wrapper {
     background-image: url('../../assets/images/search-bar-background.avif');
     background-repeat: no-repeat;
@@ -20,4 +22,40 @@
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
+}
+
+.search-input {
+    max-width: 20rem;
+    width: 100%;
+    padding: 0.81rem 0.75rem;
+    border-radius: 1.87rem;
+    border: 1px solid variables.$light-accent-color;
+    outline: none;
+    background-color: transparent;
+    color: variables.$light-accent-color;
+    box-sizing: content-box;
+    letter-spacing: 1.5px;
+    font-family: 'Ringbearer Medium', sans-serif;
+}
+
+.search-input::placeholder {
+    color: variables.$light-accent-color;
+    font-family: 'Ringbearer Medium', sans-serif;
+}
+
+.search-btn {
+    color: variables.$dark-accent-color;
+    border-radius: 1.87rem;
+    padding: 0.8rem;
+    border: none;
+    margin-left: 0.625rem;
+    background-color: variables.$light-accent-color;
+    font-family: 'Ringbearer Medium', sans-serif;
+    transition: all 0.4s;
+
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    box-shadow: variables.$box-shadow;
 }
