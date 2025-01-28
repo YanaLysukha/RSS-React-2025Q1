@@ -51,7 +51,7 @@
     margin-left: 0.625rem;
     background-color: variables.$light-accent-color;
     font-family: 'Ringbearer Medium', sans-serif;
-    transition: all 0.4s;
+    transition: variables.$transition;
 
     cursor: pointer;
 }
