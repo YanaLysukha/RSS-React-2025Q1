@@ -1,0 +1,20 @@
+import { Component } from 'react';
+import { ICharacter } from '../../api/types';
+import ListItem from '../ListItem';
+
+type TListViewProps = {
+    characters: ICharacter[];
+};
+
+export default class ListView extends Component<TListViewProps> {
+    render() {
+        const { characters } = this.props;
+        return (
+            <div className="list-view-wrapper">
+                {characters.map((character) => (
+                    <ListItem character={character} key={character._id}></ListItem>
+                ))}
+            </div>
+        );
+    }
+}
