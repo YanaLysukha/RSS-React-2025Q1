@@ -11,6 +11,15 @@
         url('../assets/fonts/RINGM___.woff') format('woff');
 }
 
+@font-face {
+    font-family: 'Trajan Pro Bold';
+    font-style: normal;
+    font-weight: normal;
+    src:
+        local('Trajan Pro Bold'),
+        url('../assets/fonts/TrajanPro-Bold.woff') format('woff');
+}
+
 * {
     box-sizing: border-box;
     margin: 0;

@@ -1,0 +1,29 @@
+@use '../../styles/_variables';
+
+.list-item {
+    border: 0.125rem solid variables.$light-accent-color;
+    border-radius: 0.625rem;
+    padding: 1rem;
+    max-width: 18.75rem;
+    width: 100%;
+    font-family: 'EB Garamond', serif;
+    font-style: normal;
+    color: variables.$light-accent-color;
+    font-size: 1.1rem;
+    background-color: variables.$card-background-color;
+    transition: all 0.4s;
+}
+
+.list-item:hover {
+    transform: scale(1.09);
+    box-shadow: variables.$box-shadow;
+}
+
+.title {
+    font-family: 'Trajan Pro Bold', sans-serif;
+    color: #937043;
+    text-align: center;
+    margin-bottom: 12px;
+    word-wrap: break-word;
+    word-break: break-word;
+}
