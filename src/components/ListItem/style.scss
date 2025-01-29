@@ -3,13 +3,13 @@
 .list-item {
     border: 0.125rem solid variables.$light-accent-color;
     border-radius: 0.625rem;
-    padding: 1rem;
+    padding: 1.1rem;
     max-width: 18.75rem;
     width: 100%;
     font-family: 'EB Garamond', serif;
     font-style: normal;
     color: variables.$light-accent-color;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     background-color: variables.$card-background-color;
     transition: variables.$transition;
     cursor: pointer;

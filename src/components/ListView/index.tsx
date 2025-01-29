@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { ICharacter } from '../../api/types';
 import ListItem from '../ListItem';
+import './style.scss';
 
 type TListViewProps = {
     characters: ICharacter[];
