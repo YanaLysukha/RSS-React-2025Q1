@@ -24,22 +24,9 @@ export default class MainPage extends Component<Record<string, never>, TState> {
         if (value) {
             const characters = await searchCharacters(value);
             this.setState({ characters, isLoading: true });
-            // localStorage.setItem('value', value);
         } else {
             const characters = await getCharacters();
             this.setState({ characters, isLoading: true });
-        }
-    };
-
-    handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const value = localStorage.getItem('value');
-        if (value) {
-            const characters = await searchCharacters(value);
-            this.setState({ characters });
-        } else {
-            const characters = await getCharacters();
-            this.setState({ characters });
         }
     };
 
@@ -61,7 +48,7 @@ export default class MainPage extends Component<Record<string, never>, TState> {
 
         return (
             <>
-                <SearchBar handleChange={this.handleChange} handleSubmit={this.handleSearch} />
+                <SearchBar handleChange={this.handleChange} handleSearch={this.handleCharacters} />
                 {isLoading ? <ListView characters={characters}></ListView> : <Loader />}
             </>
         );
