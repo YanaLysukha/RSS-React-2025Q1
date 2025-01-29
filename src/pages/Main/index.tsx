@@ -21,13 +21,8 @@ export default class MainPage extends Component<Record<string, never>, TState> {
 
     handleCharacters = async (value?: string) => {
         this.setState({ isLoading: false });
-        if (value) {
-            const characters = await searchCharacters(value);
-            this.setState({ characters, isLoading: true });
-        } else {
-            const characters = await getCharacters();
-            this.setState({ characters, isLoading: true });
-        }
+        const characters = value ? await searchCharacters(value) : await getCharacters();
+        this.setState({ characters, isLoading: true });
     };
 
     handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,11 +31,7 @@ export default class MainPage extends Component<Record<string, never>, TState> {
 
     componentDidMount = async () => {
         const value = localStorage.getItem('value');
-        if (value) {
-            await this.handleCharacters(value);
-        } else {
-            await this.handleCharacters();
-        }
+        await this.handleCharacters(value || '');
     };
 
     render() {

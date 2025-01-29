@@ -11,7 +11,7 @@ export default class SearchBar extends Component<TSearchBarProps> {
         super(props);
     }
 
-    handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const { handleSearch } = this.props;
         const value = localStorage.getItem('value') ?? '';
