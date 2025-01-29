@@ -1,23 +1,23 @@
-@use 'variables';
+@use "variables";
 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
 
 @font-face {
-    font-family: 'Ringbearer Medium';
+    font-family: "Ringbearer Medium";
     font-style: normal;
     font-weight: normal;
     src:
-        local('Ringbearer Medium'),
-        url('../assets/fonts/RINGM___.woff') format('woff');
+        local("Ringbearer Medium"),
+        url("../assets/fonts/RINGM___.woff") format("woff");
 }
 
 @font-face {
-    font-family: 'Trajan Pro Bold';
+    font-family: "Trajan Pro Bold";
     font-style: normal;
     font-weight: normal;
     src:
-        local('Trajan Pro Bold'),
-        url('../assets/fonts/TrajanPro-Bold.woff') format('woff');
+        local("Trajan Pro Bold"),
+        url("../assets/fonts/TrajanPro-Bold.woff") format("woff");
 }
 
 * {
@@ -29,5 +29,5 @@
 body {
     background-color: variables.$dark-accent-color;
     color: variables.$light-accent-color;
-    font-family: 'Ringbearer Medium', sans-serif;
+    font-family: "Ringbearer Medium", sans-serif;
 }

@@ -1,5 +1,5 @@
-import { Component, ReactNode } from 'react';
-import './style.scss';
+import { Component, ReactNode } from "react";
+import "./style.scss";
 
 type TErrorBoundaryProps = {
     children?: ReactNode;
@@ -20,7 +20,7 @@ export default class ErrorBoundary extends Component<TErrorBoundaryProps, TError
     }
 
     componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-        console.error('Uncaught error:', error, errorInfo);
+        console.error("Uncaught error:", error, errorInfo);
     }
 
     render(): ReactNode {

@@ -1,6 +1,6 @@
-import { Component } from 'react';
-import './style.scss';
-import { ICharacter } from '../../api/types';
+import { Component } from "react";
+import "./style.scss";
+import { ICharacter } from "../../api/types";
 
 type TListItemProps = {
     character: ICharacter;

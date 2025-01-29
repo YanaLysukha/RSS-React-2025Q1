@@ -1,4 +1,4 @@
-export const baseURL = 'https://the-one-api.dev/v2/character';
+export const baseURL = "https://the-one-api.dev/v2/character";
 
 export interface ICharacter {
     _id: string;

@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import '../SearchBar/style.scss';
+import { Component } from "react";
+import "../SearchBar/style.scss";
 
 type TErrorBtnState = {
     error: boolean;
@@ -14,7 +14,7 @@ export default class ErrorButton extends Component {
 
     componentDidUpdate = () => {
         if (this.state.error) {
-            throw new Error('Oops, something went wrong!');
+            throw new Error("Oops, something went wrong!");
         }
     };
 

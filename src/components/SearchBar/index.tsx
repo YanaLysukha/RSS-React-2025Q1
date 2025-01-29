@@ -1,6 +1,6 @@
-import { Component } from 'react';
-import './style.scss';
-import ErrorButton from '../ErrorButton';
+import { Component } from "react";
+import "./style.scss";
+import ErrorButton from "../ErrorButton";
 
 type TSearchBarProps = {
     handleSearch: (value: string) => void;
@@ -15,12 +15,12 @@ export default class SearchBar extends Component<TSearchBarProps> {
     private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const { handleSearch } = this.props;
-        const value = localStorage.getItem('value') ?? '';
+        const value = localStorage.getItem("value") ?? "";
         handleSearch(value);
     };
 
     render() {
-        const searchValue = localStorage.getItem('value') ?? '';
+        const searchValue = localStorage.getItem("value") ?? "";
 
         return (
             <div className="search-bar-wrapper">

@@ -1,9 +1,9 @@
-import { Component } from 'react';
-import SearchBar from '../../components/SearchBar';
-import ListView from '../../components/ListView';
-import { getCharacters, searchCharacters } from '../../api';
-import { ICharacter } from '../../api/types';
-import Loader from '../../components/Loader';
+import { Component } from "react";
+import SearchBar from "../../components/SearchBar";
+import ListView from "../../components/ListView";
+import { getCharacters, searchCharacters } from "../../api";
+import { ICharacter } from "../../api/types";
+import Loader from "../../components/Loader";
 
 type TState = {
     characters: ICharacter[];
@@ -26,12 +26,12 @@ export default class MainPage extends Component<Record<string, never>, TState> {
     };
 
     handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        localStorage.setItem('value', e.target.value);
+        localStorage.setItem("value", e.target.value);
     };
 
     componentDidMount = async () => {
-        const value = localStorage.getItem('value');
-        await this.handleCharacters(value || '');
+        const value = localStorage.getItem("value");
+        await this.handleCharacters(value || "");
     };
 
     render() {

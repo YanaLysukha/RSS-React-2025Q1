@@ -1,7 +1,7 @@
-@use '../../styles/_variables';
+@use "../../styles/_variables";
 
 .search-bar-wrapper {
-    background-image: url('../../assets/images/search-bar-background.avif');
+    background-image: url("../../assets/images/search-bar-background.avif");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -35,12 +35,12 @@
     color: variables.$light-accent-color;
     box-sizing: content-box;
     letter-spacing: 1.5px;
-    font-family: 'Ringbearer Medium', sans-serif;
+    font-family: "Ringbearer Medium", sans-serif;
 }
 
 .search-input::placeholder {
     color: variables.$light-accent-color;
-    font-family: 'Ringbearer Medium', sans-serif;
+    font-family: "Ringbearer Medium", sans-serif;
 }
 
 .search-btn {
@@ -50,7 +50,7 @@
     border: none;
     margin-left: 0.625rem;
     background-color: variables.$light-accent-color;
-    font-family: 'Ringbearer Medium', sans-serif;
+    font-family: "Ringbearer Medium", sans-serif;
     transition: variables.$transition;
 
     cursor: pointer;
