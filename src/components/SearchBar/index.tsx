@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import './style.scss';
+import ErrorButton from '../ErrorButton';
 
 type TSearchBarProps = {
     handleSearch: (value: string) => void;
@@ -39,6 +40,7 @@ export default class SearchBar extends Component<TSearchBarProps> {
                         onChange={this.props.handleChange}
                     />
                     <button className="search-btn">Search</button>
+                    <ErrorButton></ErrorButton>
                 </form>
             </div>
         );

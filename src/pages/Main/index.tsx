@@ -36,7 +36,6 @@ export default class MainPage extends Component<Record<string, never>, TState> {
 
     render() {
         const { characters, isLoading } = this.state;
-
         return (
             <>
                 <SearchBar handleChange={this.handleChange} handleSearch={this.handleCharacters} />
