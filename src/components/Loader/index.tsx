@@ -6,7 +6,7 @@ export default class Loader extends Component {
         return (
             <img
                 className="loader"
-                src="../../assets/icons/ring-inscription.png"
+                src="src/assets/icons/ring-inscription.png"
                 alt="loader icon"
             ></img>
         );
