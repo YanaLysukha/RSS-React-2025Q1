@@ -21,9 +21,9 @@ export default class MainPage extends Component<Record<string, never>, TState> {
         this.setState({ characters });
     };
 
-    componentDidMount = async () => {
-        await this.handleCharacters();
-    };
+    // componentDidMount = async () => {
+    //     await this.handleCharacters();
+    // };
 
     render() {
         const { characters } = this.state;
