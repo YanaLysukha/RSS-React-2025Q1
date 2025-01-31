@@ -13,9 +13,15 @@ export default class ListItem extends Component<TListItemProps> {
         return (
             <div className={styles.listItem}>
                 <h1 className={styles.title}>{character.name}</h1>
-                <p>Race: {character.race}</p>
-                <p>Gender: {character.gender}</p>
-                <p>Spouse: {character.spouse}</p>
+                <p className={styles.highlighted}>
+                    Race: <span>{character.race}</span>
+                </p>
+                <p className={styles.highlighted}>
+                    Gender: <span>{character.gender}</span>
+                </p>
+                <p className={styles.highlighted}>
+                    Spouse: <span>{character.spouse}</span>
+                </p>
             </div>
         );
     }
