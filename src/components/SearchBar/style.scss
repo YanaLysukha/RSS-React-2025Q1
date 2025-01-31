@@ -36,6 +36,10 @@
     box-sizing: content-box;
     letter-spacing: 1.5px;
     font-family: "Ringbearer Medium", sans-serif;
+
+    &:focus {
+        box-shadow: variables.$box-shadow;
+    }
 }
 
 .search-input::placeholder {
