@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "../SearchBar/style.scss";
+import styles from "../SearchBar/style.module.scss";
 
 type TErrorBtnState = {
     error: boolean;
@@ -20,7 +20,7 @@ export default class ErrorButton extends Component {
 
     render() {
         return (
-            <button className="search-btn" onClick={this.handleClick}>
+            <button className={styles.searchBtn} onClick={this.handleClick}>
                 Error
             </button>
         );

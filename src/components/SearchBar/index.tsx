@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./style.scss";
+import styles from "./style.module.scss";
 import ErrorButton from "../ErrorButton";
 
 type TSearchBarProps = {
@@ -23,12 +23,16 @@ export default class SearchBar extends Component<TSearchBarProps> {
         const searchValue = localStorage.getItem("value") ?? "";
 
         return (
-            <div className="search-bar-wrapper">
-                <div className="logo-wrapper">
-                    <img className="logo" src="src/assets/icons/LOTR-icon.svg" alt="App Logo" />
+            <div className={styles.searchBarWrapper}>
+                <div className={styles.logoWrapper}>
+                    <img
+                        className={styles.logo}
+                        src="src/assets/icons/LOTR-icon.svg"
+                        alt="App Logo"
+                    />
                 </div>
-                <form className="search-bar" onSubmit={this.handleSubmit}>
-                    <label htmlFor="search" className="sr-only">
+                <form className={styles.searchBar} onSubmit={this.handleSubmit}>
+                    <label htmlFor="search" className={styles.srOnly}>
                         Search Input
                     </label>
                     <input
@@ -36,10 +40,10 @@ export default class SearchBar extends Component<TSearchBarProps> {
                         defaultValue={searchValue}
                         type="text"
                         placeholder="Find your favorite character..."
-                        className="search-input"
+                        className={styles.searchInput}
                         onChange={this.props.handleChange}
                     />
-                    <button className="search-btn">Search</button>
+                    <button className={styles.searchBtn}>Search</button>
                     <ErrorButton></ErrorButton>
                 </form>
             </div>

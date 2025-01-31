@@ -1,6 +1,6 @@
 @use "../../styles/_variables";
 
-.search-bar-wrapper {
+.searchBarWrapper {
     background-image: url("../../assets/images/search-bar-background.avif");
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,14 +17,14 @@
     padding: 1rem;
 }
 
-.search-bar {
+.searchBar {
     display: flex;
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
 }
 
-.search-input {
+.searchInput {
     max-width: 20rem;
     width: 100%;
     padding: 0.81rem 0.75rem;
@@ -42,12 +42,12 @@
     }
 }
 
-.search-input::placeholder {
+.searchInput::placeholder {
     color: variables.$light-accent-color;
     font-family: "Ringbearer Medium", sans-serif;
 }
 
-.search-btn {
+.searchBtn {
     color: variables.$dark-accent-color;
     border-radius: 1.87rem;
     padding: 0.8rem;
@@ -60,11 +60,11 @@
     cursor: pointer;
 }
 
-.search-btn:hover {
+.searchBtn:hover {
     box-shadow: variables.$box-shadow;
 }
 
-.sr-only {
+.srOnly {
     position: absolute;
     width: 1px;
     height: 1px;
