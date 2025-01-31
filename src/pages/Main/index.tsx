@@ -21,7 +21,10 @@ export default class MainPage extends Component<Record<string, never>, TState> {
 
     handleCharacters = async (value?: string) => {
         this.setState({ isLoading: false });
-        const characters = value ? await searchCharacters(value) : await getCharacters();
+        const trimmedValue = value?.trim();
+        const characters = trimmedValue
+            ? await searchCharacters(trimmedValue)
+            : await getCharacters();
         this.setState({ characters, isLoading: true });
     };
 
