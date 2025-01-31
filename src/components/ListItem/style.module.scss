@@ -1,6 +1,6 @@
 @use "../../styles/_variables";
 
-.list-item {
+.listItem {
     border: 0.125rem solid variables.$light-accent-color;
     border-radius: 0.625rem;
     padding: 1.1rem;
@@ -15,7 +15,7 @@
     cursor: pointer;
 }
 
-.list-item:hover {
+.listItem:hover {
     transform: scale(1.09);
     box-shadow: variables.$box-shadow;
 }

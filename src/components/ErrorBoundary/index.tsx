@@ -1,5 +1,5 @@
 import { Component, ReactNode } from "react";
-import "./style.scss";
+import styles from "./style.module.scss";
 
 type TErrorBoundaryProps = {
     children?: ReactNode;
@@ -25,7 +25,7 @@ export default class ErrorBoundary extends Component<TErrorBoundaryProps, TError
 
     render(): ReactNode {
         if (this.state.error) {
-            return <h1 className="error-title">Something went wrong...</h1>;
+            return <h1 className={styles.errorTitle}>Something went wrong...</h1>;
         }
         return this.props.children;
     }

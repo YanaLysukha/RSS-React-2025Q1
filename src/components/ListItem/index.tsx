@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./style.scss";
+import styles from "./style.module.scss";
 import { ICharacter } from "../../api/types";
 
 type TListItemProps = {
@@ -11,8 +11,8 @@ export default class ListItem extends Component<TListItemProps> {
         const { character } = this.props;
 
         return (
-            <div className="list-item">
-                <h1 className="title">{character.name}</h1>
+            <div className={styles.listItem}>
+                <h1 className={styles.title}>{character.name}</h1>
                 <p>Race: {character.race}</p>
                 <p>Gender: {character.gender}</p>
                 <p>Spouse: {character.spouse}</p>
