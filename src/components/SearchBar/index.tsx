@@ -1,6 +1,7 @@
 import { Component } from "react";
 import styles from "./style.module.scss";
 import ErrorButton from "../ErrorButton";
+import logoIcon from "../../assets/icons/LOTR-icon.svg";
 
 type TSearchBarProps = {
     handleSearch: (value: string) => void;
@@ -25,11 +26,7 @@ export default class SearchBar extends Component<TSearchBarProps> {
         return (
             <div className={styles.searchBarWrapper}>
                 <div className={styles.logoWrapper}>
-                    <img
-                        className={styles.logo}
-                        src="src/assets/icons/LOTR-icon.svg"
-                        alt="App Logo"
-                    />
+                    <img className={styles.logo} src={logoIcon} alt="App Logo" />
                 </div>
                 <form className={styles.searchBar} onSubmit={this.handleSubmit}>
                     <label htmlFor="search" className={styles.srOnly}>
