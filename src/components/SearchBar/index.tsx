@@ -3,16 +3,19 @@ import logoIcon from "../../assets/icons/LOTR-icon.svg";
 
 type TSearchBarProps = {
     handleSearch: (value: string) => void;
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function SearchBar({ handleSearch, handleChange }: TSearchBarProps) {
+export default function SearchBar({ handleSearch }: TSearchBarProps) {
     const searchValue = localStorage.getItem("value") ?? "";
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const value = localStorage.getItem("value") ?? "";
         handleSearch(value);
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        localStorage.setItem("value", e.target.value);
     };
 
     return (
