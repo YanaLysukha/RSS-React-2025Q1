@@ -1,6 +1,5 @@
 import { Component } from "react";
 import styles from "./style.module.scss";
-import ErrorButton from "../ErrorButton";
 import logoIcon from "../../assets/icons/LOTR-icon.svg";
 
 type TSearchBarProps = {
@@ -41,7 +40,6 @@ export default class SearchBar extends Component<TSearchBarProps> {
                         onChange={this.props.handleChange}
                     />
                     <button className={styles.searchBtn}>Search</button>
-                    <ErrorButton></ErrorButton>
                 </form>
             </div>
         );
