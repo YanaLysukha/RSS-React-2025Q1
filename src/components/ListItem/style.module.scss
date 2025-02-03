@@ -1,0 +1,38 @@
+@use "../../styles/_variables";
+
+.listItem {
+    border: 0.125rem solid variables.$light-accent-color;
+    border-radius: 0.625rem;
+    padding: 1.1rem;
+    max-width: 18.75rem;
+    width: 100%;
+    font-family: "EB Garamond", serif;
+    font-style: normal;
+    color: variables.$light-accent-color;
+    font-size: 1.2rem;
+    background-color: variables.$card-background-color;
+    transition: variables.$transition;
+    cursor: pointer;
+}
+
+.listItem:hover {
+    transform: scale(1.09);
+    box-shadow: variables.$box-shadow;
+}
+
+.title {
+    font-family: "Trajan Pro Bold", sans-serif;
+    color: variables.$card-text-color;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.highlighted {
+    font-weight: 600;
+
+    & span {
+        font-weight: 400;
+    }
+}

@@ -1,0 +1,77 @@
+@use "../../styles/_variables";
+
+.searchBarWrapper {
+    background-image: url("../../assets/images/search-bar-background.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    max-width: 100%;
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 16rem;
+    padding: 1rem;
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.searchInput {
+    max-width: 20rem;
+    width: 100%;
+    padding: 0.81rem 0.75rem;
+    border-radius: 1.87rem;
+    border: 1px solid variables.$light-accent-color;
+    outline: none;
+    background-color: transparent;
+    color: variables.$light-accent-color;
+    box-sizing: content-box;
+    letter-spacing: 1.5px;
+    font-family: "Ringbearer Medium", sans-serif;
+
+    &:focus {
+        box-shadow: variables.$box-shadow;
+    }
+}
+
+.searchInput::placeholder {
+    color: variables.$light-accent-color;
+    font-family: "Ringbearer Medium", sans-serif;
+}
+
+.searchBtn {
+    color: variables.$dark-accent-color;
+    border-radius: 1.87rem;
+    padding: 0.8rem;
+    border: none;
+    margin-left: 0.625rem;
+    background-color: variables.$light-accent-color;
+    font-family: "Ringbearer Medium", sans-serif;
+    transition: variables.$transition;
+
+    cursor: pointer;
+}
+
+.searchBtn:hover {
+    box-shadow: variables.$box-shadow;
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
