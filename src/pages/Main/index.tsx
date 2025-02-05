@@ -4,6 +4,7 @@ import ListView from "../../components/ListView";
 import { getCharacters, searchCharacters } from "../../api";
 import { ICharacter } from "../../api/types";
 import Loader from "../../components/Loader";
+import Pagination from "../../components/Pagination";
 
 export default function MainPage() {
     const [characters, setCharacters] = useState<ICharacter[]>([]);
@@ -28,6 +29,7 @@ export default function MainPage() {
         <>
             <SearchBar handleSearch={handleCharacters} />
             {isLoading ? <ListView characters={characters}></ListView> : <Loader />}
+            <Pagination></Pagination>
         </>
     );
 }
