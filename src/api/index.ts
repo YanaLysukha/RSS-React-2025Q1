@@ -1,9 +1,9 @@
 import { ICharacter } from "./types";
 import { baseURL } from "./types";
 
-export const getCharacters = async (): Promise<ICharacter[]> => {
+export const getCharacters = async (page: number): Promise<ICharacter[]> => {
     try {
-        const response = await fetch(`${baseURL}?limit=100&page=1`, {
+        const response = await fetch(`${baseURL}?limit=100&page=${page}`, {
             headers: {
                 Authorization: "Bearer Ic5iqi0En-5oQyBlk-oH",
             },

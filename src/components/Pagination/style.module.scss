@@ -21,6 +21,7 @@
 
 .btn:disabled {
     background-color: variables.$disabled-button-color;
+    cursor: default;
 }
 
 @media (max-width: 900px) {
