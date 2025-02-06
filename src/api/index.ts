@@ -1,11 +1,11 @@
 import { ICharacterResponse } from "./types";
 import { baseURL } from "./types";
 
-export const fetchCharacters = async ({
+export const getCharacters = async ({
     page,
     searchValue,
 }: {
-    page?: number;
+    page: number;
     searchValue?: string;
 }): Promise<ICharacterResponse> => {
     try {

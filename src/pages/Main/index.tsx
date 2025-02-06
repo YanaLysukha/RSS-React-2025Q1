@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import SearchBar from "../../components/SearchBar";
 import ListView from "../../components/ListView";
-import { fetchCharacters } from "../../api";
+import { getCharacters } from "../../api";
 import { ICharacter } from "../../api/types";
 import Loader from "../../components/Loader";
 import Pagination from "../../components/Pagination";
@@ -13,29 +13,50 @@ export default function MainPage() {
     const [isLoading, setIsLoading] = useState(false);
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const getPageValue = useCallback(() => Number(searchParams.get("page") || 1), [searchParams]);
-    const currentPage = useMemo(() => getPageValue(), [getPageValue]);
 
-    const handleCharacters = useCallback(
-        async (value?: string) => {
-            setIsLoading(false);
-            const trimmedValue = value?.trim();
-            const data = await fetchCharacters({ page: currentPage, searchValue: trimmedValue });
-            setCharacters(data.docs);
-            setTotalPages(data.pages);
-            setIsLoading(true);
-        },
-        [currentPage],
-    );
+    const getPageValue = useCallback(() => Number(searchParams.get("page") || 1), [searchParams]);
+    const getSearchValue = useCallback(() => searchParams.get("search") || "", [searchParams]);
+
+    const currentPage = useMemo(() => getPageValue(), [getPageValue]);
+    const searchQuery = useMemo(() => getSearchValue(), [getSearchValue]);
+
+    const fetchCharacters = useCallback(async () => {
+        setIsLoading(false);
+        const data = await getCharacters({ page: currentPage, searchValue: searchQuery });
+        setCharacters(data.docs);
+        setTotalPages(data.pages);
+        setIsLoading(true);
+    }, [currentPage, searchQuery]);
 
     const onPageChange = (newPage: number) => {
-        setSearchParams({ ...searchParams, page: newPage.toString() });
+        setSearchParams((prev) => {
+            const params = new URLSearchParams(prev);
+            params.set("page", newPage.toString());
+            return params;
+        });
     };
 
+    const handleCharacters = useCallback(
+        (value?: string) => {
+            const trimmedValue = value?.trim() || "";
+            setSearchParams((prevParams) => {
+                const params = new URLSearchParams(prevParams);
+                if (trimmedValue) {
+                    params.set("search", trimmedValue);
+                } else {
+                    params.delete("search");
+                }
+                params.set("page", "1");
+                return params;
+            });
+        },
+        [setSearchParams],
+    );
+
     useEffect(() => {
-        const value = localStorage.getItem("value");
-        handleCharacters(value || "");
-    }, [handleCharacters]);
+        // const value = localStorage.getItem("value");
+        fetchCharacters();
+    }, [fetchCharacters]);
 
     return (
         <>
