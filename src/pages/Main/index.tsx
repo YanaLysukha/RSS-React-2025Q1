@@ -56,12 +56,7 @@ export default function MainPage() {
     );
 
     const handleCardOpening = (id: string) => {
-        // setSearchParams((prev) => {
-        //     const params = new URLSearchParams(prev);
-        //     params.set("itemId", id);
-        //     return params;
-        // });
-        navigate(`/item/${id}`);
+        navigate(`/item/${id}?${searchParams}`);
     };
 
     useEffect(() => {
