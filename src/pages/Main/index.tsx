@@ -12,7 +12,7 @@ export default function MainPage() {
     const [totalPages, setTotalPages] = useState<number>(1);
     const [isLoading, setIsLoading] = useState(false);
 
-    const [searchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
     const getPageValue = useCallback(() => Number(searchParams.get("page") || 1), [searchParams]);
     const currentPage = useMemo(() => getPageValue(), [getPageValue]);
 
@@ -30,8 +30,8 @@ export default function MainPage() {
         [currentPage],
     );
 
-    const changePage = () => {
-        console.log(searchParams);
+    const onPageChange = (newPage: number) => {
+        setSearchParams({ ...searchParams, page: newPage.toString() });
     };
 
     useEffect(() => {
@@ -48,7 +48,7 @@ export default function MainPage() {
                     <Pagination
                         totalPages={totalPages}
                         currentPage={currentPage}
-                        handlePageChange={changePage}
+                        handlePageChange={onPageChange}
                     ></Pagination>
                 </>
             ) : (
