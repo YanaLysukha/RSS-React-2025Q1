@@ -2,29 +2,37 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import SearchBar from "../../components/SearchBar";
 import ListView from "../../components/ListView";
 import { getCharacters, searchCharacters } from "../../api";
-import { ICharacter } from "../../api/types";
+import { ICharacter, ICharacterResponse } from "../../api/types";
 import Loader from "../../components/Loader";
 import Pagination from "../../components/Pagination";
-import useNavigateMethods from "../../hooks/useNavigateMethods";
+import { useSearchParams } from "react-router-dom";
 
 export default function MainPage() {
     const [characters, setCharacters] = useState<ICharacter[]>([]);
+    const [totalPages, setTotalPages] = useState<number>(1);
     const [isLoading, setIsLoading] = useState(false);
-    const { getPageValue } = useNavigateMethods();
+
+    const [searchParams] = useSearchParams();
+    const getPageValue = useCallback(() => Number(searchParams.get("page") || 1), [searchParams]);
     const currentPage = useMemo(() => getPageValue(), [getPageValue]);
 
     const handleCharacters = useCallback(
         async (value?: string) => {
             setIsLoading(false);
             const trimmedValue = value?.trim();
-            const characters = trimmedValue
+            const data: ICharacterResponse = trimmedValue
                 ? await searchCharacters(trimmedValue)
                 : await getCharacters(currentPage);
-            setCharacters(characters);
+            setCharacters(data.docs);
+            setTotalPages(data.pages);
             setIsLoading(true);
         },
         [currentPage],
     );
+
+    const changePage = () => {
+        console.log(searchParams);
+    };
 
     useEffect(() => {
         const value = localStorage.getItem("value");
@@ -37,7 +45,11 @@ export default function MainPage() {
             {isLoading ? (
                 <>
                     <ListView characters={characters}></ListView>
-                    <Pagination></Pagination>
+                    <Pagination
+                        totalPages={totalPages}
+                        currentPage={currentPage}
+                        handlePageChange={changePage}
+                    ></Pagination>
                 </>
             ) : (
                 <Loader />

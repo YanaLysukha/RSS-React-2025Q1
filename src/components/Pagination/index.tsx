@@ -1,20 +1,30 @@
 import styles from "./style.module.scss";
-import { useLocation, useNavigate } from "react-router-dom";
-import useNavigateMethods from "../../hooks/useNavigateMethods";
-import { useMemo } from "react";
+// import { useLocation, useNavigate } from "react-router-dom";
+// import useNavigateMethods from "../../hooks/useNavigateMethods";
+// import { useMemo } from "react";
 
-const TOTAL_PAGES = 10;
+// const TOTAL_PAGES = 10;
 
-export default function Pagination() {
-    const pages = Array.from({ length: TOTAL_PAGES }, (_, i) => i + 1);
-    const navigate = useNavigate();
-    const { pathname } = useLocation();
-    const { getPageValue } = useNavigateMethods();
-    const currentPage = useMemo(() => getPageValue(), [getPageValue]);
+type TPaginationProps = {
+    totalPages: number;
+    currentPage: number;
+    handlePageChange: (page: number) => void;
+};
 
-    const handlePageChange = (page: number) => {
-        navigate(`${pathname}?page=${page}`);
-    };
+export default function Pagination({
+    totalPages,
+    currentPage,
+    handlePageChange,
+}: TPaginationProps) {
+    const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+    // const navigate = useNavigate();
+    // const { pathname } = useLocation();
+    // const { getPageValue } = useNavigateMethods();
+    // const currentPage = useMemo(() => getPageValue(), [getPageValue]);
+
+    // const handlePageChange = (page: number) => {
+    //     navigate(`${pathname}?page=${page}`);
+    // };
 
     return (
         <div className={styles.wrapper}>
@@ -25,16 +35,9 @@ export default function Pagination() {
             >
                 {"<"}
             </button>
-            {pages.map((page) => (
-                <button
-                    className={styles.btn}
-                    key={page}
-                    onClick={() => handlePageChange(page)}
-                    disabled={page === currentPage}
-                >
-                    {page}
-                </button>
-            ))}
+            <div>
+                page {currentPage} of {totalPages}
+            </div>
             <button
                 className={styles.btn}
                 onClick={() => handlePageChange(currentPage + 1)}

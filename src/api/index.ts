@@ -1,30 +1,44 @@
-import { ICharacter } from "./types";
+import { ICharacterResponse } from "./types";
 import { baseURL } from "./types";
 
-export const getCharacters = async (page: number): Promise<ICharacter[]> => {
+export const getCharacters = async (page: number): Promise<ICharacterResponse> => {
     try {
-        const response = await fetch(`${baseURL}?limit=100&page=${page}`, {
+        const response = await fetch(`${baseURL}?limit=20&page=${page}`, {
             headers: {
                 Authorization: "Bearer Ic5iqi0En-5oQyBlk-oH",
             },
         });
-        return (await response.json()).docs;
+        return await response.json();
     } catch (error) {
         console.error(error);
-        return [];
+        return {
+            docs: [],
+            total: 0,
+            limit: 0,
+            offset: 0,
+            page: 0,
+            pages: 0,
+        };
     }
 };
 
-export const searchCharacters = async (searchValue: string): Promise<ICharacter[]> => {
+export const searchCharacters = async (searchValue: string): Promise<ICharacterResponse> => {
     try {
-        const response = await fetch(`${baseURL}?name=/${searchValue}/i`, {
+        const response = await fetch(`${baseURL}?limit=20&name=/${searchValue}/i`, {
             headers: {
                 Authorization: "Bearer Ic5iqi0En-5oQyBlk-oH",
             },
         });
-        return (await response.json()).docs;
+        return await response.json();
     } catch (error) {
         console.error(error);
-        return [];
+        return {
+            docs: [],
+            total: 0,
+            limit: 0,
+            offset: 0,
+            page: 0,
+            pages: 0,
+        };
     }
 };

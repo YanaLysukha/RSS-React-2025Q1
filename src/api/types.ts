@@ -13,3 +13,12 @@ export interface ICharacter {
     realm: string | null;
     spouse: string;
 }
+
+export interface ICharacterResponse {
+    docs: ICharacter[];
+    total: number;
+    limit: number;
+    offset: number;
+    page: number;
+    pages: number;
+}
