@@ -54,7 +54,6 @@ export default function MainPage() {
     );
 
     useEffect(() => {
-        // const value = localStorage.getItem("value");
         fetchCharacters();
     }, [fetchCharacters]);
 

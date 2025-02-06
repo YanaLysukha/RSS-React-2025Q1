@@ -12,14 +12,12 @@ export default function SearchBar({ handleSearch }: TSearchBarProps) {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // const value = localStorage.getItem("value") ?? "";
         const trimmedValue = savedValue.trim();
         setSavedValue(trimmedValue);
         handleSearch(trimmedValue);
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        // localStorage.setItem("value", e.target.value);
         setSavedValue(e.target.value);
     };
 
