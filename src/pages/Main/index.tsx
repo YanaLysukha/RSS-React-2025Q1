@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import SearchBar from "../../components/SearchBar";
 import ListView from "../../components/ListView";
-import { getCharacters, searchCharacters } from "../../api";
-import { ICharacter, ICharacterResponse } from "../../api/types";
+import { fetchCharacters } from "../../api";
+import { ICharacter } from "../../api/types";
 import Loader from "../../components/Loader";
 import Pagination from "../../components/Pagination";
 import { useSearchParams } from "react-router-dom";
@@ -20,9 +20,7 @@ export default function MainPage() {
         async (value?: string) => {
             setIsLoading(false);
             const trimmedValue = value?.trim();
-            const data: ICharacterResponse = trimmedValue
-                ? await searchCharacters(trimmedValue)
-                : await getCharacters(currentPage);
+            const data = await fetchCharacters({ page: currentPage, searchValue: trimmedValue });
             setCharacters(data.docs);
             setTotalPages(data.pages);
             setIsLoading(true);
