@@ -1,4 +1,4 @@
-import { ICharacterResponse } from "./types";
+import { ICharacter, ICharacterResponse } from "./types";
 import { baseURL } from "./types";
 
 export const getCharacters = async ({
@@ -31,5 +31,19 @@ export const getCharacters = async ({
             page: 0,
             pages: 0,
         };
+    }
+};
+
+export const getCharactersById = async (id: string): Promise<ICharacter | null> => {
+    try {
+        const response = await fetch(`${baseURL}/${id}`, {
+            headers: {
+                Authorization: "Bearer Ic5iqi0En-5oQyBlk-oH",
+            },
+        });
+        return (await response.json()).docs[0];
+    } catch (e) {
+        console.error(e);
+        return null;
     }
 };

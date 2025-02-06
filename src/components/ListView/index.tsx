@@ -4,9 +4,10 @@ import styles from "./style.module.scss";
 
 type TListViewProps = {
     characters: ICharacter[];
+    onCardClick: (id: string) => void;
 };
 
-export default function ListView({ characters }: TListViewProps) {
+export default function ListView({ characters, onCardClick }: TListViewProps) {
     if (!characters.length) {
         return (
             <div className={styles.listViewMessage}>
@@ -18,7 +19,11 @@ export default function ListView({ characters }: TListViewProps) {
     return (
         <div className={styles.listViewWrapper}>
             {characters.map((character: ICharacter) => (
-                <ListItem character={character} key={character._id}></ListItem>
+                <ListItem
+                    character={character}
+                    key={character._id}
+                    onCardClick={onCardClick}
+                ></ListItem>
             ))}
         </div>
     );

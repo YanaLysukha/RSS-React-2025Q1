@@ -1,22 +1,35 @@
 import styles from "./style.module.scss";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ICharacter } from "../../api/types";
 import Loader from "../Loader";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
+import { getCharactersById } from "../../api";
 
 export default function Details() {
-    const [characterData] = useState<ICharacter | null>(null);
+    const [characterData, setCharacterData] = useState<ICharacter | null>(null);
     const [isLoading] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
 
+    const { itemId } = useParams<{ itemId: string }>();
+
     const handleClose = () => {
-        searchParams.delete("details");
+        searchParams.delete("itemId");
         setSearchParams(searchParams);
     };
 
+    const handleCharacter = useCallback(async (id: string) => {
+        const data = await getCharactersById(id);
+        setCharacterData(data);
+    }, []);
+
+    useEffect(() => {
+        console.log(itemId);
+        if (itemId) handleCharacter(itemId);
+    }, [handleCharacter, itemId]);
+
     return (
         <div className={styles.detailsWrapper} data-testid="details-component">
-            {!isLoading ? (
+            {isLoading ? (
                 <Loader data-testid="detailed-loader"></Loader>
             ) : (
                 <div className={styles.container}>

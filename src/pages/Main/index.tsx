@@ -5,13 +5,15 @@ import { getCharacters } from "../../api";
 import { ICharacter } from "../../api/types";
 import Loader from "../../components/Loader";
 import Pagination from "../../components/Pagination";
-import { useSearchParams } from "react-router-dom";
+import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
+import styles from "./style.module.scss";
 
 export default function MainPage() {
     const [characters, setCharacters] = useState<ICharacter[]>([]);
     const [totalPages, setTotalPages] = useState<number>(1);
     const [isLoading, setIsLoading] = useState(false);
 
+    const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
 
     const getPageValue = useCallback(() => Number(searchParams.get("page") || 1), [searchParams]);
@@ -53,25 +55,40 @@ export default function MainPage() {
         [setSearchParams],
     );
 
+    const handleCardOpening = (id: string) => {
+        // setSearchParams((prev) => {
+        //     const params = new URLSearchParams(prev);
+        //     params.set("itemId", id);
+        //     return params;
+        // });
+        navigate(`/item/${id}`);
+    };
+
     useEffect(() => {
         fetchCharacters();
     }, [fetchCharacters]);
 
     return (
-        <>
-            <SearchBar handleSearch={handleCharacters} />
-            {isLoading ? (
-                <>
-                    <ListView characters={characters}></ListView>
-                    <Pagination
-                        totalPages={totalPages}
-                        currentPage={currentPage}
-                        handlePageChange={onPageChange}
-                    ></Pagination>
-                </>
-            ) : (
-                <Loader />
-            )}
-        </>
+        <div className={styles.wrapper}>
+            <div className={styles.charactersBlock}>
+                <SearchBar handleSearch={handleCharacters} />
+                {isLoading ? (
+                    <>
+                        <ListView
+                            onCardClick={handleCardOpening}
+                            characters={characters}
+                        ></ListView>
+                        <Pagination
+                            totalPages={totalPages}
+                            currentPage={currentPage}
+                            handlePageChange={onPageChange}
+                        ></Pagination>
+                    </>
+                ) : (
+                    <Loader />
+                )}
+            </div>
+            <Outlet></Outlet>
+        </div>
     );
 }

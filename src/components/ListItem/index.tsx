@@ -3,11 +3,12 @@ import { ICharacter } from "../../api/types";
 
 type TListItemProps = {
     character: ICharacter;
+    onCardClick: (id: string) => void;
 };
 
-export default function ListItem({ character }: TListItemProps) {
+export default function ListItem({ character, onCardClick }: TListItemProps) {
     return (
-        <div className={styles.listItem}>
+        <div className={styles.listItem} onClick={() => onCardClick(character._id)}>
             <h1 className={styles.title}>{character.name}</h1>
             <p className={styles.highlighted}>
                 Race: <span>{character.race}</span>
