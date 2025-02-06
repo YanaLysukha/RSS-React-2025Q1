@@ -1,5 +1,6 @@
 import styles from "./style.module.scss";
 import logoIcon from "../../assets/icons/LOTR-icon.svg";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 type TSearchBarProps = {
     handleSearch: (value: string) => void;
@@ -7,15 +8,19 @@ type TSearchBarProps = {
 
 export default function SearchBar({ handleSearch }: TSearchBarProps) {
     const searchValue = localStorage.getItem("value") ?? "";
+    const [savedValue, setSavedValue] = useLocalStorage("");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const value = localStorage.getItem("value") ?? "";
-        handleSearch(value);
+        // const value = localStorage.getItem("value") ?? "";
+        const trimmedValue = savedValue.trim();
+        setSavedValue(trimmedValue);
+        handleSearch(trimmedValue);
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        localStorage.setItem("value", e.target.value);
+        // localStorage.setItem("value", e.target.value);
+        setSavedValue(e.target.value);
     };
 
     return (
