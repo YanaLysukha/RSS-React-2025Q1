@@ -12,8 +12,9 @@
     font-size: 1rem;
     background-color: variables.$card-background-color;
     color: variables.$light-accent-color;
-    padding: 0.6rem;
+    padding: 0.4rem;
     max-width: 2.5rem;
+    width: 100%;
     border-radius: 0.312rem;
     border: 0.062rem solid variables.$light-accent-color;
     cursor: pointer;
@@ -22,6 +23,26 @@
 .btn:disabled {
     background-color: variables.$disabled-button-color;
     cursor: default;
+}
+
+.pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.5rem;
+}
+
+.common {
+    font-weight: 400;
+    font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+}
+
+.highlighted {
+    font-weight: 700;
+    font-size: 1.7rem;
+    color: variables.$card-text-color;
+    margin: 0 0.5rem;
 }
 
 @media (max-width: 900px) {

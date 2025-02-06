@@ -22,8 +22,11 @@ export default function Pagination({
             >
                 {"<"}
             </button>
-            <div>
-                page {currentPage} of {totalPages}
+            <div className={styles.pages}>
+                <span className={styles.common}>page</span>{" "}
+                <span className={styles.highlighted}>{currentPage}</span>{" "}
+                <span className={styles.common}>of</span>{" "}
+                <span className={styles.highlighted}>{totalPages}</span>
             </div>
             <button
                 className={styles.btn}
