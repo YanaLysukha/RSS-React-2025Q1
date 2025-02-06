@@ -1,9 +1,4 @@
 import styles from "./style.module.scss";
-// import { useLocation, useNavigate } from "react-router-dom";
-// import useNavigateMethods from "../../hooks/useNavigateMethods";
-// import { useMemo } from "react";
-
-// const TOTAL_PAGES = 10;
 
 type TPaginationProps = {
     totalPages: number;
@@ -17,14 +12,6 @@ export default function Pagination({
     handlePageChange,
 }: TPaginationProps) {
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-    // const navigate = useNavigate();
-    // const { pathname } = useLocation();
-    // const { getPageValue } = useNavigateMethods();
-    // const currentPage = useMemo(() => getPageValue(), [getPageValue]);
-
-    // const handlePageChange = (page: number) => {
-    //     navigate(`${pathname}?page=${page}`);
-    // };
 
     return (
         <div className={styles.wrapper}>
