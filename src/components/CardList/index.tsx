@@ -9,7 +9,7 @@ type TListViewProps = {
     onCardClick: (id: string) => void;
 };
 
-export default function ListView({ characters, onCardClick }: TListViewProps) {
+export default function CardList({ characters, onCardClick }: TListViewProps) {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
 

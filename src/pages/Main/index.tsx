@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import SearchBar from "../../components/SearchBar";
-import ListView from "../../components/ListView";
+import CardList from "../../components/CardList";
 import { getCharacters } from "../../api";
 import { ICharacter } from "../../api/types";
 import Loader from "../../components/Loader";
@@ -69,10 +69,10 @@ export default function MainPage() {
                 <SearchBar handleSearch={handleCharacters} />
                 {isLoading ? (
                     <>
-                        <ListView
+                        <CardList
                             onCardClick={handleCardOpening}
                             characters={characters}
-                        ></ListView>
+                        ></CardList>
                         <Pagination
                             totalPages={totalPages}
                             currentPage={currentPage}
