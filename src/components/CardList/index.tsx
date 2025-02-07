@@ -1,5 +1,5 @@
 import { ICharacter } from "../../api/types";
-import ListItem from "../ListItem";
+import Card from "../Card";
 import styles from "./style.module.scss";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useRef } from "react";
@@ -32,11 +32,7 @@ export default function CardList({ characters, onCardClick }: TListViewProps) {
     return (
         <div role="view" className={styles.listViewWrapper} ref={listRef} onClick={handleListClick}>
             {characters.map((character: ICharacter) => (
-                <ListItem
-                    character={character}
-                    key={character._id}
-                    onCardClick={onCardClick}
-                ></ListItem>
+                <Card character={character} key={character._id} onCardClick={onCardClick}></Card>
             ))}
         </div>
     );

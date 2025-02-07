@@ -6,9 +6,13 @@ type TListItemProps = {
     onCardClick: (id: string) => void;
 };
 
-export default function ListItem({ character, onCardClick }: TListItemProps) {
+export default function Card({ character, onCardClick }: TListItemProps) {
     return (
-        <div className={styles.listItem} onClick={() => onCardClick(character._id)}>
+        <div
+            className={styles.listItem}
+            onClick={() => onCardClick(character._id)}
+            data-testid="result-card"
+        >
             <h1 className={styles.title}>{character.name}</h1>
             <p className={styles.highlighted}>
                 Race: <span>{character.race}</span>
