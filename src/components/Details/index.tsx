@@ -34,7 +34,7 @@ export default function Details() {
                 <Loader data-testid="detailed-loader"></Loader>
             ) : (
                 <div className={styles.container}>
-                    <button data-testid="close-btn" className={styles.button} onClick={handleClose}>
+                    <button className={styles.button} onClick={handleClose}>
                         Close
                     </button>
                     <div className={styles.wrapper}>

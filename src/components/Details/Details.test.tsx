@@ -1,6 +1,6 @@
 import { vi, describe, it, expect } from "vitest";
 import * as api from "../../api";
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import Details from "./index";
 import { characterMock } from "../../test/mocks/mocks";
@@ -40,5 +40,19 @@ describe("Details", () => {
             expect(screen.getByText(characterMock.race)).toBeInTheDocument();
             expect(screen.getByText(characterMock.gender)).toBeInTheDocument();
         });
+    });
+
+    it("clicking the close button hides the component", async () => {
+        render(
+            <MemoryRouter initialEntries={[`/item/${characterMock._id}`]}>
+                <Details />
+            </MemoryRouter>,
+        );
+
+        await waitFor(() => expect(getCharacterByIdSpy).toHaveBeenCalledWith(characterMock._id));
+        const closeButton = await screen.findByRole("button", { name: /Close/i });
+        expect(closeButton).toBeInTheDocument();
+        fireEvent.click(closeButton);
+        expect(screen.queryByRole("button", { name: /close details/i })).not.toBeInTheDocument();
     });
 });
