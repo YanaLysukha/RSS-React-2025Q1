@@ -11,14 +11,14 @@ export interface ICharacter {
     hair: string | null;
     height: string | null;
     realm: string | null;
-    spouse: string;
+    spouse: string | null;
 }
 
 export interface ICharacterResponse {
     docs: ICharacter[];
     total: number;
     limit: number;
-    offset: number;
+    offset?: number;
     page: number;
     pages: number;
 }
