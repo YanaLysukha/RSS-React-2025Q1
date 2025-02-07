@@ -18,12 +18,27 @@ vi.mock("react-router-dom", async () => {
 describe("Details", () => {
     it("should display loading indicator while fetching data", async () => {
         render(
-            <MemoryRouter initialEntries={["/item/5cd99d4bde30eff6ebccfc36"]}>
+            <MemoryRouter initialEntries={[`/item/${characterMock._id}`]}>
                 <Details />
             </MemoryRouter>,
         );
 
         expect(screen.getByTestId("loader")).toBeInTheDocument();
         await waitFor(() => expect(getCharacterByIdSpy).toHaveBeenCalledWith(characterMock._id));
+    });
+
+    it("detailed card component should correctly display the detailed card data", async () => {
+        render(
+            <MemoryRouter initialEntries={[`/item/${characterMock._id}`]}>
+                <Details />
+            </MemoryRouter>,
+        );
+
+        await waitFor(() => expect(getCharacterByIdSpy).toHaveBeenCalledWith(characterMock._id));
+        await waitFor(() => {
+            expect(screen.getByText(characterMock.name)).toBeInTheDocument();
+            expect(screen.getByText(characterMock.race)).toBeInTheDocument();
+            expect(screen.getByText(characterMock.gender)).toBeInTheDocument();
+        });
     });
 });
