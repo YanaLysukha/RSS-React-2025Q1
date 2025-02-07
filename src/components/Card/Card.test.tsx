@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import Card from "./index";
 import { characterMock } from "../../test/mocks/mocks";
 
@@ -9,9 +9,9 @@ const mockCardClick = vi.fn();
 describe("Card", () => {
     it("card component should render the relevant card data", () => {
         render(
-            <BrowserRouter>
+            <MemoryRouter>
                 <Card character={characterMock} onCardClick={mockCardClick}></Card>
-            </BrowserRouter>,
+            </MemoryRouter>,
         );
         const card = screen.getByText(characterMock.name);
         expect(card).toBeInTheDocument();
@@ -19,9 +19,9 @@ describe("Card", () => {
 
     it("clicking on a card should open a detailed card component", () => {
         render(
-            <BrowserRouter>
+            <MemoryRouter>
                 <Card character={characterMock} onCardClick={mockCardClick}></Card>
-            </BrowserRouter>,
+            </MemoryRouter>,
         );
         const card = screen.getByTestId("result-card");
         fireEvent.click(card);

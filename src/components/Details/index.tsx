@@ -11,7 +11,6 @@ export default function Details() {
     const [searchParams] = useSearchParams();
 
     const { itemId } = useParams<{ itemId: string }>();
-
     const navigate = useNavigate();
 
     const handleClose = () => {
