@@ -30,7 +30,7 @@ export default function CardList({ characters, onCardClick }: TListViewProps) {
         );
     }
     return (
-        <div className={styles.listViewWrapper} ref={listRef} onClick={handleListClick}>
+        <div role="view" className={styles.listViewWrapper} ref={listRef} onClick={handleListClick}>
             {characters.map((character: ICharacter) => (
                 <ListItem
                     character={character}
